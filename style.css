@@ -210,6 +210,7 @@ a:active {
 }
 
 .btn {
+    cursor: pointer;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -597,4 +598,15 @@ a:active {
 
 .category-list-item {
     cursor: pointer;
+}
+
+.favourite-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#favourite-items-container {
+    padding: 0 30px;
 }
