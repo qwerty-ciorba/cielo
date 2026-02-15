@@ -1,89 +1,110 @@
 window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
-  if (loader) loader.style.display = "none";
+    const loader = document.querySelector(".loader");
+    if (loader) loader.style.display = "none";
 });
-
 
 const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 
 hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  mobileMenu.classList.toggle("open");
+    hamburger.classList.toggle("active");
+    mobileMenu.classList.toggle("open");
 });
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    mobileMenu.classList.remove("open");
-  });
+document.querySelectorAll(".mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("open");
+    });
 });
-
 
 const faders = document.querySelectorAll(".fade-in");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.2 });
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    },
+    { threshold: 0.2 },
+);
 
-faders.forEach(el => observer.observe(el));
-
+faders.forEach((el) => observer.observe(el));
 
 window.addEventListener("scroll", () => {
-  const header = document.getElementById("header");
-  const progress = document.getElementById("progressBar");
+    const header = document.getElementById("header");
+    const progress = document.getElementById("progressBar");
 
-  header.classList.toggle("scrolled", window.scrollY > 50);
+    header.classList.toggle("scrolled", window.scrollY > 50);
 
-  const scroll = window.scrollY;
-  const height = document.body.scrollHeight - window.innerHeight;
-  progress.style.width = `${(scroll / height) * 100}%`;
+    const scroll = window.scrollY;
+    const height = document.body.scrollHeight - window.innerHeight;
+    progress.style.width = `${(scroll / height) * 100}%`;
 });
 
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (!target) return;
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (!target) return;
+        const offset = 100;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
 
-    const offset = 100;
-    const y = target.getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top: y,
-      behavior: "smooth"
+        window.scrollTo({
+            top: y,
+            behavior: "smooth",
+        });
     });
-  });
 });
-document.querySelector(".logo").addEventListener("click", function(e) {
-  e.preventDefault();
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+document.querySelector(".logo").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
 });
 const header = document.getElementById("header");
 
 window.addEventListener("scroll", function () {
-  if (window.pageYOffset === 0) {
-    header.classList.remove("hide");
-  } else if (!header.matches(":hover")) {
-    header.classList.add("hide");
-  }
+    if (window.pageYOffset === 0) {
+        header.classList.remove("hide");
+    } else if (!header.matches(":hover")) {
+        header.classList.add("hide");
+    }
 });
 
 document.addEventListener("mousemove", function (e) {
-  if (e.clientY < 80) {
-    header.classList.remove("hide");
-  }
+    if (e.clientY < 80) {
+        header.classList.remove("hide");
+    }
 });
 
 header.addEventListener("mouseleave", function () {
-  if (window.pageYOffset !== 0) {
-    header.classList.add("hide");
-  }
+    if (window.pageYOffset !== 0) {
+        header.classList.add("hide");
+    }
+});
+
+const cerceiDiv = document.getElementById("cercei_collection");
+const cerceiOverlay = document.getElementById("cerceriOverlay");
+const closeOverlayBtn = document.getElementById("closeOverlay");
+
+function closeOverlay() {
+    cerceiOverlay.classList.remove("overlay");
+    cerceiOverlay.classList.add("hidden");
+}
+
+cerceiDiv.addEventListener("click", function () {
+    cerceiOverlay.classList.add("overlay");
+    cerceiOverlay.classList.remove("hidden");
+});
+
+closeOverlayBtn.addEventListener("click", closeOverlay);
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !cerceiOverlay.classList.contains("hidden")) {
+        closeOverlay();
+    }
 });
