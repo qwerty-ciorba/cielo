@@ -594,3 +594,7 @@ a:active {
 .close-overlay:hover {
     color: var(--gold);
 }
+
+.category-list-item {
+    cursor: pointer;
+}

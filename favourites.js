@@ -25,4 +25,9 @@ function addToLocalStorage(category, itemId) {
         existingItem.count += 1;
         localStorage.setItem(key, JSON.stringify(items));
     }
+
+    renderFavouriteItems();
 }
+
+// o functie care o sa faca display la itemele favorite
+function renderFavouriteItems() {}

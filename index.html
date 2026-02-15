@@ -82,14 +82,17 @@
             <h2 class="section-title">COLECȚII</h2>
 
             <div class="collections">
-                <div class="collection cercei luxury-hover">
-                    <div class="collection-image" id="cercei_collection"></div>
+                <div
+                    class="collection cercei luxury-hover"
+                    data-category="cercei"
+                >
+                    <div class="collection-image"></div>
                     <h3>CERCEI</h3>
                 </div>
 
                 <div
                     class="collection coliere luxury-hover"
-                    id="coliere_collection"
+                    data-category="coliere"
                 >
                     <div class="collection-image"></div>
                     <h3>COLIERE</h3>
@@ -97,7 +100,7 @@
 
                 <div
                     class="collection inele luxury-hover"
-                    id="inele_collection"
+                    data-category="inele"
                 >
                     <div class="collection-image"></div>
                     <h3>INELE</h3>
@@ -105,7 +108,7 @@
 
                 <div
                     class="collection bratari luxury-hover"
-                    id="bratari_collection"
+                    data-category="bratari"
                 >
                     <div class="collection-image"></div>
                     <h3>BRĂȚĂRI</h3>
@@ -124,6 +127,7 @@
 
             <div class="nigga">
                 <h2 class="section-title">FAVOURITES</h2>
+                <div id="favourite-items-container"></div>
             </div>
         </section>
 
@@ -212,13 +216,95 @@
             </div>
         </footer>
 
-        <div class="hidden" id="cerceriOverlay">
-            <button class="close-overlay" id="closeOverlay">&times;</button>
-            <p1 id="cercei1">cercei 1</p1>
-            <p1 id="cercei2">cercei 2</p1>
-            <p1 id="cercei3">cercei 3</p1>
+        <div class="hidden" id="cercei-overlay">
+            <button class="close-overlay">&times;</button>
+            <p1
+                class="category-list-item"
+                data-category="cercei"
+                data-item-id="1"
+                >cercei 1</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="cercei"
+                data-item-id="2"
+                >cercei 2</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="cercei"
+                data-item-id="3"
+                >cercei 3</p1
+            >
+        </div>
+
+        <div class="hidden" id="coliere-overlay">
+            <button class="close-overlay">&times;</button>
+            <p1
+                class="category-list-item"
+                data-category="coliere"
+                data-item-id="1"
+                >coliere 1</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="coliere"
+                data-item-id="2"
+                >coliere 2</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="coliere"
+                data-item-id="3"
+                >coliere 3</p1
+            >
+        </div>
+
+        <div class="hidden" id="inele-overlay">
+            <button class="close-overlay">&times;</button>
+            <p1
+                class="category-list-item"
+                data-category="inele"
+                data-item-id="1"
+                >inele 1</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="inele"
+                data-item-id="2"
+                >inele 2</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="inele"
+                data-item-id="3"
+                >inele 3</p1
+            >
+        </div>
+
+        <div class="hidden" id="bratari-overlay">
+            <button class="close-overlay">&times;</button>
+            <p1
+                class="category-list-item"
+                data-category="bratari"
+                data-item-id="1"
+                >bratari 1</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="bratari"
+                data-item-id="2"
+                >bratari 2</p1
+            >
+            <p1
+                class="category-list-item"
+                data-category="bratari"
+                data-item-id="3"
+                >bratari 3</p1
+            >
         </div>
 
         <script src="script.js"></script>
+        <script src="favourites.js"></script>
     </body>
 </html>

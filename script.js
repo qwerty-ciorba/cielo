@@ -87,24 +87,40 @@ header.addEventListener("mouseleave", function () {
     }
 });
 
-const cerceiDiv = document.getElementById("cercei_collection");
-const cerceiOverlay = document.getElementById("cerceriOverlay");
-const closeOverlayBtn = document.getElementById("closeOverlay");
+document.querySelectorAll(".luxury-hover").forEach((hover) => {
+    const category = hover.dataset.category;
+    const overlay = document.getElementById(`${category}-overlay`);
 
-function closeOverlay() {
-    cerceiOverlay.classList.remove("overlay");
-    cerceiOverlay.classList.add("hidden");
+    hover.addEventListener("click", function (e) {
+        closeAllOverlays();
+        openOverlay(overlay);
+    });
+
+    const closeBtn = overlay.querySelector(".close-overlay");
+    closeBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        closeOverlay(overlay);
+    });
+});
+
+function closeOverlay(overlay) {
+    overlay.classList.remove("overlay");
+    overlay.classList.add("hidden");
 }
 
-cerceiDiv.addEventListener("click", function () {
-    cerceiOverlay.classList.add("overlay");
-    cerceiOverlay.classList.remove("hidden");
-});
-
-closeOverlayBtn.addEventListener("click", closeOverlay);
+function openOverlay(overlay) {
+    overlay.classList.add("overlay");
+    overlay.classList.remove("hidden");
+}
 
 document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !cerceiOverlay.classList.contains("hidden")) {
-        closeOverlay();
+    if (e.key === "Escape") {
+        closeAllOverlays();
     }
 });
+
+function closeAllOverlays() {
+    document.querySelectorAll(".overlay").forEach((overlay) => {
+        closeOverlay(overlay);
+    });
+}
