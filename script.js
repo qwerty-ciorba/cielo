@@ -135,3 +135,40 @@ function closeAllOverlays() {
         closeOverlay(overlay);
     });
 }
+
+// ================= EMAILJS CONTACT FORM =================
+
+(function () {
+    emailjs.init("d2FufH8f7Wq5mXM1N"); // replace with your Public Key
+})();
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = this.querySelector('input[name="name"]').value;
+        const email = this.querySelector('input[name="email"]').value;
+        const message = this.querySelector('textarea[name="message"]').value;
+
+        const templateParams = {
+            from_name: name,
+            reply_to: email,
+            message: message,
+        };
+
+        emailjs
+            .send("service_ki8g555", "template_e31cw7m", templateParams)
+            .then(
+                function () {
+                    alert("Message sent successfully!");
+                    contactForm.reset();
+                },
+                function (error) {
+                    alert("Failed to send message. Please try again.");
+                    console.error(error);
+                },
+            );
+    });
+}
