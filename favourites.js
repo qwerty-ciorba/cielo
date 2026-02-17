@@ -1,93 +1,138 @@
-document.querySelectorAll(".category-list-item").forEach((item) => {
-    const category = item.dataset.category;
-    const itemId = item.dataset.itemId;
+document.addEventListener("DOMContentLoaded", function () {
+    const wishlistBtn = document.getElementById("wishlistBtn");
+    const wishlistDropdown = document.getElementById("wishlistDropdown");
 
-    item.addEventListener("click", function (e) {
-        addToLocalStorage(category, itemId);
+    wishlistBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        wishlistDropdown.classList.toggle("open");
     });
-});
 
-function addToLocalStorage(category, itemId) {
+    document.addEventListener("click", function () {
+        wishlistDropdown.classList.remove("open");
+    });
+
     const key = "favourite_items";
 
-    const items = JSON.parse(localStorage.getItem(key)) || [];
+    function getItems() {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    }
 
-    const existingItem = items.find(
-        (item) => item.category === category && item.id === itemId,
-    );
-
-    if (existingItem === undefined) {
-        const newItem = { category, id: itemId, count: 1 };
-
-        items.push(newItem);
-        localStorage.setItem(key, JSON.stringify(items));
-    } else {
-        existingItem.count += 1;
+    function saveItems(items) {
         localStorage.setItem(key, JSON.stringify(items));
     }
 
-    renderFavouriteItems();
-}
+    function isFavourite(category, id) {
+        return getItems().some(
+            (item) => item.category === category && item.id === id,
+        );
+    }
 
-// o functie care o sa faca display la itemele favorite
-renderFavouriteItems();
+    function addToFavourites(category, id) {
+        const items = getItems();
+        items.push({ category, id });
+        saveItems(items);
+    }
 
-function renderFavouriteItems() {
-    const items = JSON.parse(localStorage.getItem("favourite_items")) || [];
-    const parent = document.getElementById("favourite-items-container");
+    function removeFromFavourites(category, id) {
+        let items = getItems();
 
-    parent.replaceChildren();
+        items = items.filter(
+            (item) => item.category !== category || item.id !== id,
+        );
 
-    items.forEach((item) => {
-        const itemElement = document.createElement("div");
-        itemElement.classList.add("favourite-item");
+        saveItems(items);
+    }
 
-        const textElement = document.createElement("span");
-        textElement.textContent = `${item.category} ${item.id} x${item.count}`;
-        itemElement.appendChild(textElement);
+    function renderFavouriteItems() {
+        const items = getItems();
+        const container = document.getElementById("wishlistContainer");
 
-        const button = document.createElement("button");
-        button.classList.add("btn");
-        button.textContent = "Delete";
-        itemElement.appendChild(button);
+        container.replaceChildren();
 
-        button.addEventListener("click", function (e) {
-            deleteFavouriteItem(item.category, item.id);
+        if (items.length === 0) {
+            const empty = document.createElement("p");
+            empty.textContent = "No favourites yet.";
+            empty.style.fontSize = "14px";
+            empty.style.opacity = "0.7";
+            container.appendChild(empty);
+            return;
+        }
+
+        items.forEach((item) => {
+            const originalCard = document.querySelector(
+                `.product-card[data-category="${item.category}"][data-item-id="${item.id}"]`,
+            );
+
+            if (!originalCard) return;
+
+            const imgSrc = originalCard.querySelector("img").src;
+            const name =
+                originalCard.querySelector(".product-name").textContent;
+
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("wishlist-item");
+
+            const img = document.createElement("img");
+            img.src = imgSrc;
+
+            const title = document.createElement("span");
+            title.textContent = name;
+
+            const removeBtn = document.createElement("button");
+            removeBtn.classList.add("wishlist-remove");
+            removeBtn.textContent = "×";
+
+            removeBtn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                removeFromFavourites(item.category, item.id);
+                updateHeartUI();
+                renderFavouriteItems();
+            });
+
+            wrapper.appendChild(img);
+            wrapper.appendChild(title);
+            wrapper.appendChild(removeBtn);
+
+            container.appendChild(wrapper);
         });
-
-        parent.appendChild(itemElement);
-    });
-}
-
-function deleteFavouriteItem(category, id) {
-    const key = "favourite_items";
-    let items = JSON.parse(localStorage.getItem(key)) || [];
-
-    const item = items.find(
-        (item) => item.category === category && item.id === id,
-    );
-
-    if (item.count == 1) {
-        removeFromLocalStorage(category, id);
-        return;
     }
 
-    item.count--;
+    function updateHeartUI() {
+        document.querySelectorAll(".product-card").forEach((card) => {
+            const category = card.dataset.category;
+            const id = card.dataset.itemId;
+            const heart = card.querySelector(".heart-btn");
 
-    localStorage.setItem(key, JSON.stringify(items));
+            if (isFavourite(category, id)) {
+                heart.textContent = "♥";
+                heart.style.color = "#c9a24d";
+            } else {
+                heart.textContent = "♡";
+                heart.style.color = "";
+            }
+        });
+    }
 
+    // ❤️ TOGGLE LOGIC
+    document.querySelectorAll(".heart-btn").forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+
+            const card = btn.closest(".product-card");
+            const category = card.dataset.category;
+            const id = card.dataset.itemId;
+
+            if (isFavourite(category, id)) {
+                removeFromFavourites(category, id);
+            } else {
+                addToFavourites(category, id);
+            }
+
+            updateHeartUI();
+            renderFavouriteItems();
+        });
+    });
+
+    updateHeartUI();
     renderFavouriteItems();
-}
-
-function removeFromLocalStorage(category, id) {
-    const key = "favourite_items";
-    let items = JSON.parse(localStorage.getItem(key)) || [];
-
-    items = items.filter(
-        (item) => item.category !== category || item.id !== id,
-    );
-
-    localStorage.setItem(key, JSON.stringify(items));
-
-    renderFavouriteItems();
-}
+});

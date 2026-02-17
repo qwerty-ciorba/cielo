@@ -28,11 +28,21 @@
         <header class="header" id="header">
             <a href="#header" class="logo">CIELO</a>
 
-            <nav class="nav">
-                <a href="#despre">Despre</a>
-                <a href="#colectii">Colecții</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <div class="header-right">
+                <nav class="nav">
+                    <a href="#despre">Despre</a>
+                    <a href="#colectii">Colecții</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+
+                <div class="wishlist-wrapper">
+                    <button class="wishlist-btn" id="wishlistBtn">♥</button>
+
+                    <div class="wishlist-dropdown" id="wishlistDropdown">
+                        <div id="wishlistContainer"></div>
+                    </div>
+                </div>
+            </div>
 
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -47,10 +57,11 @@
             <a href="#contact">Contact</a>
         </div>
 
+        <!-- HERO -->
         <section class="hero">
             <h1 class="hero-title reveal-hero">CIELO</h1>
             <p class="hero-subtitle reveal-hero-delay">
-                Bijuteriile pe care le vei purta cu siguranță si esti sigma
+                Bijuteriile pe care le vei purta cu siguranță
             </p>
 
             <a
@@ -62,22 +73,21 @@
             </a>
         </section>
 
+        <!-- DESPRE -->
         <section class="section fade-in" id="despre">
             <h2 class="section-title">DESPRE CIELO</h2>
 
             <div class="about">
                 <p>
-                    CIELO este un brand de bijuterii care a fost creat din
-                    dorința de a oferi piese moderne, elegante și accesibile
-                    femeilor, oferind o vastă gamă de bijuterii, printre care cu
-                    ușurință pooți găsi piesa care se va potrivi chiar stilului
-                    tău.
+                    CIELO este un brand de bijuterii creat pentru a oferi piese
+                    moderne, elegante și accesibile, potrivite stilului tău.
                 </p>
 
                 <div class="about-image"></div>
             </div>
         </section>
 
+        <!-- COLECTII -->
         <section class="section fade-in" id="colectii">
             <h2 class="section-title">COLECȚII</h2>
 
@@ -116,21 +126,18 @@
             </div>
         </section>
 
-        <section class="section fade-in" id="double">
-            <div class="nigga">
-                <h2 class="section-title">CLIENȚI FERICIȚI</h2>
-                <p class="testimonial">
-                    „Bijuterii superbe, elegante și exact ca în poze. Recomand
-                    cu drag.”
-                </p>
-            </div>
+        <!-- CLIENTI FERICITI -->
+        <section class="section fade-in" id="clienti">
+            <h2 class="section-title">CLIENȚI FERICIȚI</h2>
 
-            <div class="nigga">
-                <h2 class="section-title">FAVOURITES</h2>
-                <div id="favourite-items-container"></div>
+            <div class="testimonial">
+                „Bijuteriile CIELO m-au surprins prin calitate și atenția la
+                detalii. Le port zilnic și primesc mereu complimente. Se simt
+                elegante, dar în același timp foarte confortabile.”
             </div>
         </section>
 
+        <!-- CONTACT -->
         <section class="contact fade-in" id="contact">
             <h2 class="section-title">CONTACT US</h2>
 
@@ -138,9 +145,8 @@
                 <div class="contact-info">
                     <h3>Get in touch</h3>
                     <p>
-                        Pentru comenzi personalizate, colaborări sau întrebări
-                        despre produse, ne poți contacta folosind formularul
-                        alăturat.
+                        Pentru comenzi personalizate sau colaborări, ne poți
+                        contacta folosind formularul.
                     </p>
 
                     <div class="contact-details">
@@ -180,13 +186,15 @@
             </div>
         </section>
 
-        <footer class="footer fade-in">
+        <!-- FOOTER -->
+        <footer class="footer">
             <div class="footer-container">
                 <div class="footer-col">
                     <div class="footer-logo">CIELO</div>
-                    <p class="footer-tagline">
+                    <p class="footer-description">
                         Bijuterii moderne și elegante create pentru femei care
-                        apreciază rafinamentul.
+                        apreciază rafinamentul, detaliile fine și stilul
+                        atemporal.
                     </p>
                 </div>
 
@@ -199,9 +207,13 @@
 
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <a href="mailto:iustincerga893@email.com"
-                        >iustincerga893@email.com</a
-                    >
+                    <span>Email: cielo.bijuterii@email.com</span>
+                    <span>Instagram: @cielo.bijuterii</span>
+                    <span>Republica Moldova</span>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
                     <a
                         href="https://www.instagram.com/cielo.bijuterii/"
                         target="_blank"
@@ -211,97 +223,229 @@
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <span>© 2026 CIELO. All rights reserved.</span>
-            </div>
+            <div class="footer-bottom">© 2026 CIELO. All rights reserved.</div>
         </footer>
 
+        <!-- ================= OVERLAYS ================= -->
+
+        <!-- CERCEI -->
         <div class="hidden" id="cercei-overlay">
             <button class="close-overlay">&times;</button>
-            <p1
-                class="category-list-item"
-                data-category="cercei"
-                data-item-id="1"
-                >cercei 1</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="cercei"
-                data-item-id="2"
-                >cercei 2</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="cercei"
-                data-item-id="3"
-                >cercei 3</p1
-            >
+
+            <div class="overlay-grid">
+                <div
+                    class="product-card"
+                    data-category="cercei"
+                    data-item-id="1"
+                >
+                    <img src="assets/cercei1.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Cercei Gold Drop</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="cercei"
+                    data-item-id="2"
+                >
+                    <img src="assets/cercei2.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Cercei Minimal</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="cercei"
+                    data-item-id="3"
+                >
+                    <img src="assets/cercei3.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Cercei Gold Drop</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="cercei"
+                    data-item-id="4"
+                >
+                    <img src="assets/cercei4.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Cercei Gold Drop</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- COLIERE -->
         <div class="hidden" id="coliere-overlay">
             <button class="close-overlay">&times;</button>
-            <p1
-                class="category-list-item"
-                data-category="coliere"
-                data-item-id="1"
-                >coliere 1</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="coliere"
-                data-item-id="2"
-                >coliere 2</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="coliere"
-                data-item-id="3"
-                >coliere 3</p1
-            >
+
+            <div class="overlay-grid">
+                <div
+                    class="product-card"
+                    data-category="coliere"
+                    data-item-id="1"
+                >
+                    <img src="assets/colier4.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Colier Luxury</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="coliere"
+                    data-item-id="2"
+                >
+                    <img src="assets/colier1.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Colier Luxury</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="coliere"
+                    data-item-id="3"
+                >
+                    <img src="assets/colier2.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Colier Luxury</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="coliere"
+                    data-item-id="4"
+                >
+                    <img src="assets/colier3.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Colier Luxury</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- INELE -->
         <div class="hidden" id="inele-overlay">
             <button class="close-overlay">&times;</button>
-            <p1
-                class="category-list-item"
-                data-category="inele"
-                data-item-id="1"
-                >inele 1</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="inele"
-                data-item-id="2"
-                >inele 2</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="inele"
-                data-item-id="3"
-                >inele 3</p1
-            >
+
+            <div class="overlay-grid">
+                <div
+                    class="product-card"
+                    data-category="inele"
+                    data-item-id="1"
+                >
+                    <img src="assets/inele1.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Inel Elegant</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="inele"
+                    data-item-id="2"
+                >
+                    <img src="assets/inele2.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Inel Elegant</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="inele"
+                    data-item-id="3"
+                >
+                    <img src="assets/inele3.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Inel Elegant</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="inele"
+                    data-item-id="4"
+                >
+                    <img src="assets/inele4.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Inel Elegant</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- BRATARI -->
         <div class="hidden" id="bratari-overlay">
             <button class="close-overlay">&times;</button>
-            <p1
-                class="category-list-item"
-                data-category="bratari"
-                data-item-id="1"
-                >bratari 1</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="bratari"
-                data-item-id="2"
-                >bratari 2</p1
-            >
-            <p1
-                class="category-list-item"
-                data-category="bratari"
-                data-item-id="3"
-                >bratari 3</p1
-            >
+
+            <div class="overlay-grid">
+                <div
+                    class="product-card"
+                    data-category="bratari"
+                    data-item-id="1"
+                >
+                    <img src="assets/bratara2.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Brățară Gold Line</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="bratari"
+                    data-item-id="2"
+                >
+                    <img src="assets/bratara1.webp" />
+                    <div class="product-info">
+                        <span class="product-name">Brățară Gold Line</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="bratari"
+                    data-item-id="3"
+                >
+                    <img src="assets/bratara4.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Brățară Gold Line</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+
+                <div
+                    class="product-card"
+                    data-category="bratari"
+                    data-item-id="4"
+                >
+                    <img src="assets/bratara3.jpg" />
+                    <div class="product-info">
+                        <span class="product-name">Brățară Gold Line</span>
+                        <button class="heart-btn">♡</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script src="script.js"></script>

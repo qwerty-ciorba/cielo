@@ -90,7 +90,7 @@ a:active {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 22px 10%;
+    padding: 20px 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -123,10 +123,14 @@ a:active {
 }
 
 .nav a {
-    margin-left: 30px;
     font-size: 14px;
     letter-spacing: 2px;
     color: var(--beige);
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
 }
 
 /* =========================
@@ -274,7 +278,7 @@ a:active {
 
 .about-image {
     height: 380px;
-    background: url("assets/colajB.jpg") center / cover no-repeat;
+    background: url("assets/colaj.png") center / cover no-repeat;
 }
 
 /* =========================
@@ -299,18 +303,18 @@ a:active {
 }
 
 .collection.cercei .collection-image {
-    background-image: url("assets/293019C01_RGB.jpg");
+    background-image: url("assets/cercei1.jpg");
 }
 
 .collection.coliere .collection-image {
-    background-image: url("assets/398425C02_RGB.webp");
+    background-image: url("assets/colier4.webp");
 }
 
 .collection.inele .collection-image {
     background-image: url("assets/sigma.jpg");
 }
 .collection.bratari .collection-image {
-    background-image: url("assets/594236C00_RGB.jpg");
+    background-image: url("assets/bratara2.jpg");
     background-size: 90%;
     background-repeat: no-repeat;
     background-position: center;
@@ -442,12 +446,11 @@ a:active {
     background: var(--gold);
 }
 
-.contact::after {
+.section::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0; /* pornește din dreapta */
     width: 60%;
     height: 1px;
     background: var(--gold);
@@ -457,40 +460,41 @@ a:active {
    FOOTER
 ========================= */
 .footer {
-    background: #111;
+    background: #0c0c0c;
+    padding: 120px 10% 50px;
     color: var(--beige);
-    padding: 100px 10% 40px;
 }
 
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 60px;
-    margin-bottom: 60px;
+    gap: 70px;
+    margin-bottom: 80px;
 }
 
 .footer-logo {
-    margin-bottom: 20px;
     font-family: "Playfair Display", serif;
-    font-size: 28px;
+    font-size: 30px;
     letter-spacing: 4px;
     color: var(--gold);
+    margin-bottom: 20px;
 }
 
-.footer-tagline {
-    font-size: 15px;
+.footer-description {
+    font-size: 14px;
     line-height: 1.8;
     opacity: 0.8;
 }
 
 .footer-col h4 {
-    margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 2px;
+    margin-bottom: 20px;
     color: var(--gold);
 }
 
-.footer-col a {
+.footer-col a,
+.footer-col span {
     display: block;
     margin-bottom: 12px;
     font-size: 14px;
@@ -504,11 +508,11 @@ a:active {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(201, 162, 77, 0.2);
-    padding-top: 25px;
+    border-top: 1px solid rgba(201, 162, 77, 0.15);
+    padding-top: 30px;
     text-align: center;
     font-size: 13px;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 /* =========================
@@ -517,6 +521,7 @@ a:active {
 @media (max-width: 768px) {
     .nav {
         display: none;
+
         .collection-image {
             height: auto;
             aspect-ratio: 1 / 1;
@@ -547,7 +552,7 @@ a:active {
     justify-content: center;
 }
 
-.nigga {
+.sigma {
     border: 1px solid red;
     width: 50%;
 }
@@ -557,23 +562,35 @@ a:active {
 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.9);
 
-    width: 70%;
-    height: 50%;
+    width: 75%;
+    height: 60%;
 
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 
-    padding: 16px;
+    padding: 20px;
     z-index: 1000;
 
-    border: 1px solid green;
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        visibility 0.4s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .hidden {
@@ -609,4 +626,200 @@ a:active {
 
 #favourite-items-container {
     padding: 0 30px;
+}
+
+.overlay-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.overlay-grid img {
+    width: 280px; /* mai late */
+    height: 460px; /* mai înalte */
+    object-fit: cover;
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.overlay-grid img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .overlay-grid {
+        flex-wrap: wrap;
+    }
+
+    .overlay-grid img {
+        width: 45%;
+        height: 280px;
+    }
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-card img {
+    width: 280px;
+    height: 460px;
+    object-fit: cover;
+    border: 1px solid var(--gold);
+}
+
+.product-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-name {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.heart-btn {
+    background: transparent;
+    border: none;
+    color: var(--beige);
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.heart-btn:hover {
+    color: var(--gold);
+}
+
+.product-card img {
+    object-fit: cover;
+}
+
+.product-card[data-category="bratari"] img {
+    object-fit: contain;
+    background: #f5f5f5; /* ca să nu rămână spațiu gol urât */
+}
+
+.wishlist-wrapper {
+    position: relative;
+}
+
+.wishlist-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: var(--beige);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.wishlist-btn:hover {
+    color: var(--gold);
+}
+
+.wishlist-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 28px; /* era 8px */
+    width: 320px;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 22px;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-15px);
+    transition: 0.35s ease;
+
+    z-index: 2000;
+}
+
+.wishlist-dropdown.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.wishlist-item img {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid var(--gold);
+}
+
+.wishlist-item span {
+    flex: 1;
+    font-size: 14px;
+}
+
+.wishlist-remove {
+    background: transparent;
+    border: none;
+    color: var(--beige);
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.wishlist-remove:hover {
+    color: var(--gold);
+}
+
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.wishlist-item img {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.wishlist-remove {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: var(--beige);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.wishlist-remove:hover {
+    color: var(--gold);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* împinge tot în dreapta */
+    gap: 40px;
 }
