@@ -172,3 +172,18 @@ if (contactForm) {
             );
     });
 }
+
+// ================= HERO FADE ON SCROLL =================
+
+const hero = document.querySelector(".hero");
+
+window.addEventListener("scroll", function () {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    let opacity = 1 - scrollY / (heroHeight * 0.65);
+
+    opacity = Math.max(0, Math.min(1, opacity));
+
+    hero.style.opacity = opacity;
+});
