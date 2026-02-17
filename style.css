@@ -1,14 +1,8 @@
-/* =========================
-   VARIABLES
-========================= */
 :root {
   --gold: #c9a24d;
   --beige: #f2eadf;
 }
 
-/* =========================
-   GLOBAL RESET
-========================= */
 * {
   margin: 0;
   padding: 0;
@@ -35,9 +29,6 @@ a:active {
   color: inherit;
 }
 
-/* =========================
-   UTILITIES
-========================= */
 .luxury-hover {
   transition: transform 0.6s ease;
 }
@@ -57,9 +48,6 @@ a:active {
   transform: translateY(0);
 }
 
-/* =========================
-   LOADER & PROGRESS
-========================= */
 .loader {
   position: fixed;
   inset: 0;
@@ -83,9 +71,6 @@ a:active {
   z-index: 1500;
 }
 
-/* =========================
-   HEADER
-========================= */
 .header {
   position: fixed;
   top: 0;
@@ -101,6 +86,13 @@ a:active {
 
   z-index: 1000;
   transition: transform 0.4s ease;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 40px;
 }
 
 .header.hide {
@@ -133,9 +125,6 @@ a:active {
   gap: 30px;
 }
 
-/* =========================
-   MOBILE MENU
-========================= */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -181,9 +170,6 @@ a:active {
   color: var(--beige);
 }
 
-/* =========================
-   HERO
-========================= */
 .hero {
   height: 100vh;
   padding-top: 160px;
@@ -236,9 +222,6 @@ a:active {
   color: var(--gold);
 }
 
-/* =========================
-   SECTIONS
-========================= */
 .section {
   position: relative;
   padding: 140px 10%;
@@ -275,9 +258,6 @@ a:active {
   font-family: "Playfair Display", serif;
 }
 
-/* =========================
-   ABOUT
-========================= */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -296,9 +276,6 @@ a:active {
   letter-spacing: 0.5px;
 }
 
-/* =========================
-   COLLECTIONS
-========================= */
 .collections {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -333,7 +310,7 @@ a:active {
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #ffffff; /* asta face negrul alb */
+  background-color: #ffffff;
 }
 
 .collection h3 {
@@ -341,9 +318,6 @@ a:active {
   letter-spacing: 3px;
 }
 
-/* =========================
-   TESTIMONIAL
-========================= */
 .testimonial {
   text-align: center;
   font-style: italic;
@@ -354,9 +328,6 @@ a:active {
   margin-top: 40px;
 }
 
-/* =========================
-   CTA
-========================= */
 .cta {
   padding: 140px 20px;
   background: #000;
@@ -368,9 +339,6 @@ a:active {
   margin-top: 40px;
 }
 
-/* =========================
-   CONTACT
-========================= */
 .contact {
   padding: 140px 10%;
   background: #111;
@@ -469,15 +437,12 @@ a:active {
   content: "";
   position: absolute;
   bottom: 0;
-  right: 0; /* pornește din dreapta */
+  right: 0;
   width: 60%;
   height: 1px;
   background: var(--gold);
 }
 
-/* =========================
-   FOOTER
-========================= */
 .footer {
   background: #0c0c0c;
   padding: 120px 10% 50px;
@@ -534,11 +499,7 @@ a:active {
   opacity: 0.6;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 768px) {
-  /* ===== NAV ===== */
   .nav {
     display: none;
   }
@@ -555,12 +516,10 @@ a:active {
     margin-right: 20px;
   }
 
-  /* ===== HERO ===== */
   .hero h1 {
     font-size: 48px;
   }
 
-  /* ===== LAYOUT ===== */
   .about,
   .contact-container {
     grid-template-columns: 1fr;
@@ -571,7 +530,6 @@ a:active {
     aspect-ratio: 1 / 1;
   }
 
-  /* ===== OVERLAY ===== */
   .overlay {
     width: 85vw;
     padding: 15px 10px;
@@ -595,36 +553,35 @@ a:active {
     aspect-ratio: 3 / 5;
   }
 
-  /* ===== HEADER FIX ===== */
   .header.hide {
     transform: translateY(0) !important;
   }
 
-.wishlist-dropdown {
-        width: 160px;   
-        padding: 12px;
-        right: 0;       
-        left: auto;
-        transform: none;
-    }
+  .wishlist-dropdown {
+    width: 160px;
+    padding: 12px;
+    right: 0;
+    left: auto;
+    transform: none;
+  }
 
-    #wishlistContainer {
-        text-align: center;
-    }
+  #wishlistContainer {
+    text-align: center;
+  }
 
-    .wishlist-item {
-        justify-content: center;
-        gap: 8px;
-    }
+  .wishlist-item {
+    justify-content: center;
+    gap: 8px;
+  }
 
-    .wishlist-item img {
-        width: 40px;
-        height: 60px;
-    }
+  .wishlist-item img {
+    width: 40px;
+    height: 60px;
+  }
 
-    .wishlist-item span {
-        font-size: 12px;
-    }
+  .wishlist-item span {
+    font-size: 12px;
+  }
 }
 
 #double {
@@ -719,8 +676,8 @@ a:active {
 }
 
 .overlay-grid img {
-  width: 280px; 
-  height: 460px; 
+  width: 280px;
+  height: 460px;
   object-fit: cover;
   border: 1px solid var(--gold);
   cursor: pointer;
@@ -785,7 +742,7 @@ a:active {
 
 .product-card[data-category="bratari"] img {
   object-fit: contain;
-  background: #f5f5f5; 
+  background: #f5f5f5;
 }
 
 .wishlist-wrapper {
@@ -809,7 +766,7 @@ a:active {
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: 28px; 
+  margin-top: 28px;
   width: 320px;
 
   background: rgba(0, 0, 0, 0.35);
