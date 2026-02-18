@@ -271,7 +271,6 @@ a:active {
 }
 
 #despre p {
-    font-family: "Playfair Display", serif;
     font-weight: 400;
     letter-spacing: 0.5px;
 }
@@ -470,6 +469,7 @@ a:active {
     font-size: 13px;
     letter-spacing: 2px;
     margin-bottom: 20px;
+    margin-top: 20px;
     color: var(--gold);
 }
 
