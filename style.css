@@ -306,8 +306,11 @@ a:active {
 }
 .collection.bratari .collection-image {
     background-image: url("assets/bratara2.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
 }
-
 .collection h3 {
     margin-top: 20px;
     letter-spacing: 3px;
